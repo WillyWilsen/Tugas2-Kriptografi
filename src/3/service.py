@@ -8,7 +8,7 @@ cipher = cipher.replace("\n", "")
 
 # Cipher bigram frequency in English
 bigram_frequency = dict()
-for i in range(len(cipher) - 1):
+for i in range(0, len(cipher) - 1, 2):
   bigram = cipher[i:i+2]
   if bigram.isalpha():
     if bigram in bigram_frequency:
@@ -72,3 +72,106 @@ with open("mapping_cipher_2.txt", "w") as file:
 print("Mapping cipher 2: ")
 print(cipher)
 print("\n")
+
+# Iterasi 3
+'''
+Didapatkan contoh susunan key sebagai berikut.
+T H E L X
+X X X X X
+X X X X X
+X X X X X
+X X X X X
+
+Sehingga
+HL -> te
+LH -> et
+'''
+mapping_dict["HL"] = "te"
+mapping_dict["LH"] = "et"
+
+# Replace cipher with mapping_dict
+cipher = replace_pairs(cipher, "HL", "LH", mapping_dict)
+with open("mapping_cipher_3.txt", "w") as file:
+  file.write(cipher)
+print("Mapping cipher 3: ")
+print(cipher)
+print("\n")
+
+# Iterasi 4
+'''
+Dari contoh susunan key tersebut, ET dipetakan menjadi hX. Karena jumlah ET banyak, maka ET diduga sebagai ha. Sehingga susunan key sebagai berikut.
+T H E L A
+X X X X X
+X X X X X
+X X X X X
+X X X X X
+
+Sehingga
+TH -> at
+HT -> ta
+TE -> ah
+ET -> ha
+TL -> ae
+LT -> ea
+TA -> al
+AT -> la
+HA -> tl
+AH -> lt
+EA -> hl
+AE -> lh
+LA -> el
+AL -> le
+'''
+mapping_dict["TH"] = "at"
+mapping_dict["HT"] = "ta"
+mapping_dict["TE"] = "ah"
+mapping_dict["ET"] = "ha"
+mapping_dict["TL"] = "ae"
+mapping_dict["LT"] = "ea"
+mapping_dict["TA"] = "al"
+mapping_dict["AT"] = "la"
+mapping_dict["HA"] = "tl"
+mapping_dict["AH"] = "lt"
+mapping_dict["EA"] = "hl"
+mapping_dict["AE"] = "lh"
+mapping_dict["LA"] = "el"
+mapping_dict["AL"] = "le"
+
+# Replace cipher with mapping_dict
+cipher = replace_pairs(cipher, "TH", "HT", mapping_dict)
+cipher = replace_pairs(cipher, "TE", "ET", mapping_dict)
+cipher = replace_pairs(cipher, "TL", "LT", mapping_dict)
+cipher = replace_pairs(cipher, "TA", "AT", mapping_dict)
+cipher = replace_pairs(cipher, "HA", "AH", mapping_dict)
+cipher = replace_pairs(cipher, "EA", "AE", mapping_dict)
+cipher = replace_pairs(cipher, "LA", "AL", mapping_dict)
+with open("mapping_cipher_4.txt", "w") as file:
+  file.write(cipher)
+print("Mapping cipher 4: ")
+print(cipher)
+print("\n")
+
+# Iterasi 5
+'''
+MH dan HM sama-sama memiliki jumlah yang banyak muncul dan apabila dilihat dari pola kata, thHM muncul 28 kali dan thMH muncul 1 kali sehingga kemungkinan
+HM -> er
+MH -> re
+'''
+mapping_dict["HM"] = "er"
+mapping_dict["MH"] = "re"
+
+# Replace cipher with mapping_dict
+cipher = replace_pairs(cipher, "HM", "MH", mapping_dict)
+with open("mapping_cipher_5.txt", "w") as file:
+  file.write(cipher)
+print("Mapping cipher 5: ")
+print(cipher)
+print("\n")
+
+# Iterasi 6
+
+for i in cipher:
+  if i.islower():
+    print(i, end="")
+  else:
+    print(" ", end="")
