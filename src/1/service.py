@@ -4,7 +4,7 @@ with open(file_name, "r") as file:
   cipher = file.read()
 cipher = cipher.replace("\n", "")
 
-# STEP 1: Mencari tabel frekuensi kemunculan huruf, bigram, dan tigram dalam Bahasa Inggri
+# STEP 1: Mencari tabel frekuensi kemunculan huruf, bigram, dan trigram dalam Bahasa Inggri
 
 # Cipher letter frequency in English
 letter_frequency = dict()
