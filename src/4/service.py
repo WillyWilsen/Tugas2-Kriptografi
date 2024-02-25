@@ -51,7 +51,7 @@ def invers_matrix(matrix):
 # Mencari key dengan rumus K = C * P^(-1) mod 26
 P = [[7, 11, 8], [4, 14, 7], [11, 0, 0]]
 P_invers = invers_matrix(P)
-C = [[14, 0, 22], [25, 20, 18], [6, 17, 2]]
+C = [[8, 9, 21], [8, 15, 8], [23, 24, 4]]
 K = [[0]*3 for _ in range(3)]
 for i in range(3):
   for j in range(3):
